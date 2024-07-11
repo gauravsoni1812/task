@@ -21,7 +21,7 @@ function Header({ setTasks, setIsAuthenticated, isAuthenticated, setTaskTitle })
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("https://task-backend-2emp.onrender.com/api/v1/task/mytask", { withCredentials: true });
+      const response = await axios.get("http://localhost:4000/api/v1/task/mytask", { withCredentials: true });
       setAllTasks(response.data.tasks);
       setTasks(response.data.tasks);
     } catch (error) {
@@ -31,7 +31,7 @@ function Header({ setTasks, setIsAuthenticated, isAuthenticated, setTaskTitle })
 
   const handleLogout = async () => {
     try {
-      const { data } = await axios.get("https://task-backend-2emp.onrender.com/api/v1/user/logout", { withCredentials: "true" });
+      const { data } = await axios.get("http://localhost:4000/api/v1/user/logout", { withCredentials: "true" });
       toast.success(data.message);
       setIsAuthenticated(false);
     } catch (error) {
@@ -68,16 +68,19 @@ function Header({ setTasks, setIsAuthenticated, isAuthenticated, setTaskTitle })
   return (
     <Navbar expand="lg" className={`bg-body-tertiary ${!isAuthenticated ? "d-none" : ""}`}>
       <Container>
-        <Navbar.Brand href="/">TASK MANAGER</Navbar.Brand>
+        <Navbar.Brand href="#home">TASK MANAGER</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
+            <Link to={"/"} className="text-decoration-none d-flex align-items-center link-light nav-item-spacing">
+              Home
+            </Link>
             <NavDropdown title="Filter Tasks" id="basic-nav-dropdown" className="nav-item-spacing">
               <NavDropdown.Item onClick={() => filterTasks("all")}>All Tasks</NavDropdown.Item>
               <NavDropdown.Item onClick={() => filterTasks("completed")}>Completed Tasks</NavDropdown.Item>
               <NavDropdown.Item onClick={() => filterTasks("incomplete")}>Pending Tasks</NavDropdown.Item>
             </NavDropdown>
-            <Button className="bg-transparent border-0 nav-item-spacing" style={{ width: "fit-content", color: "black" }} onClick={handleLogout}>
+            <Button className="bg-transparent border-0 nav-item-spacing" style={{ width: "fit-content" }} onClick={handleLogout}>
               LOGOUT
             </Button>
           </Nav>
