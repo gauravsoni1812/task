@@ -65,6 +65,35 @@ function Header({ setTasks, setIsAuthenticated, isAuthenticated, setTaskTitle })
     setTasks(filteredTasks);
   };
 
+  const colorTasks = (filterType) => {
+    let filteredTasks = [];
+
+    switch (filterType) {
+      case "red":
+        filteredTasks = allTasks.filter((task) => task.color === "red");
+        console.log(filteredTasks)
+        setTaskTitle("red (high priority task)");
+        break
+      case "blue":
+        filteredTasks = allTasks.filter((task) => task.color === "blue");
+        setTaskTitle("Blue (medium priority task)");
+        break;
+      case "green":
+        filteredTasks = allTasks.filter((task) => task.color === "green");
+        setTaskTitle("Green (lowest priority task)");
+        break;
+      case "all":
+        filteredTasks = allTasks;
+        setTaskTitle("Tasks");
+        break;
+      default:
+        filteredTasks = allTasks;
+    }
+    setTasks(filteredTasks);
+  };
+
+
+
   return (
     <Navbar expand="lg" className={`bg-body-tertiary ${!isAuthenticated ? "d-none" : ""}`}>
       <Container>
@@ -77,6 +106,13 @@ function Header({ setTasks, setIsAuthenticated, isAuthenticated, setTaskTitle })
               <NavDropdown.Item onClick={() => filterTasks("completed")}>Completed Tasks</NavDropdown.Item>
               <NavDropdown.Item onClick={() => filterTasks("incomplete")}>Pending Tasks</NavDropdown.Item>
             </NavDropdown>
+
+            <NavDropdown title="Priority" id="basic-nav-dropdown" className="nav-item-spacing">
+              <NavDropdown.Item onClick={() => colorTasks("red")}>Red (high priority priority)</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => colorTasks("blue")}>Blue(medium priority)</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => colorTasks("green")}>green (lowest priority)</NavDropdown.Item>
+            </NavDropdown>
+        
             <Button className="bg-transparent border-0 nav-item-spacing" style={{ width: "fit-content", color:"black" }} onClick={handleLogout}>
               LOGOUT
             </Button>

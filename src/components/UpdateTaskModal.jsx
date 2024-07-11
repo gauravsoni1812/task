@@ -15,6 +15,7 @@ const UpdateTaskModal = ({
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("incomplete");
   const [archived, setArchived] = useState(false);
+  const [color, setColor]= useState("green")
 
   useEffect(() => {
     const getSingleTask = async () => {
@@ -26,7 +27,7 @@ const UpdateTaskModal = ({
           setTitle(res.data.task.title);
           setDescription(res.data.task.description);
           setStatus(res.data.task.status);
-          setArchived(res.data.task.archived);
+          setColor(res.data.task.color);
         })
         .catch((error) => {
           console.log(error.response.data.message);
@@ -44,7 +45,8 @@ const UpdateTaskModal = ({
         {
           title,
           description,
-          status
+          status,
+          color
         },
         {
           withCredentials: true,
@@ -61,6 +63,7 @@ const UpdateTaskModal = ({
                 title,
                 description,
                 status,
+                color
               };
             } else {
               return task;
@@ -107,6 +110,16 @@ const UpdateTaskModal = ({
             <select value={status} onChange={(e) => setStatus(e.target.value)}>
               <option value="completed">COMPLETED</option>
               <option value="incomplete">PENDING</option>
+            </select>
+          </Stack>
+
+          <br />
+          <Stack gap={2}>
+            <label>Color</label>
+            <select value={color} onChange={(e) => setColor(e.target.value)}>
+              <option value="red">Red (high priority priority)</option>
+              <option value="blue">Blue (medium priority)</option>
+              <option value="green">Green (low priority priority)</option>
             </select>
           </Stack>
           

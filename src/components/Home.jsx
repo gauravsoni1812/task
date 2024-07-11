@@ -89,6 +89,14 @@ const Home = ({ isAuthenticated, tasks, setTasks, taskTitle }) => {
                         ? task.description
                         : task.description.slice(0, 300) + "..."}
                     </Card.Text>
+                    <Card.Text>
+                      {task.color==="red"?"This is high priority task":""}
+                      {task.color==="blue"?"This is medium priority task":""}
+                      {task.color==="green"?"This is low priority task":""}
+                    </Card.Text>
+                    <Card.Text>
+                      created At {task.createdAt}
+                    </Card.Text>
                   </Stack>
                   <Stack direction="horizontal" className="justify-content-end" gap={2}>
                     <MdEdit onClick={() => handleUpdateModalShow(task._id)} className="fs-3" />

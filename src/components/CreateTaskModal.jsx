@@ -13,12 +13,13 @@ const CreateTaskModal = ({
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("")
+  const [color, setColor] = useState("green")
 
   const handleCreateTask = async () => {
     await axios
       .post(
         "http://localhost:4000/api/v1/task/post",
-        { title, description, date },
+        { title, description, date, color },
         {
           withCredentials: true,
           headers: { "Content-Type": "application/json" },
@@ -29,6 +30,7 @@ const CreateTaskModal = ({
         setTasks((prevTasks) => [...prevTasks, res.data.task]);
         setTitle("");
         setDescription("");
+        setColor("")
         handleCreateModalClose();
       })
       .catch((error) => {
@@ -62,7 +64,7 @@ const CreateTaskModal = ({
               onChange={(e) => setDescription(e.target.value)}
             />
           </Stack>
-
+          <br />
           <Stack gap={3}>
             <label>Date</label>
             <input
@@ -71,6 +73,19 @@ const CreateTaskModal = ({
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
+          </Stack>
+
+          <br />
+          <Stack gap={2}>
+            <label>Color</label>
+            <select value={color} onChange={(e) => {
+              console.log(e.target.value)
+              setColor(e.target.value)
+              }}>
+              <option value="red">Red (high priority priority)</option>
+              <option value="blue">Blue (medium priority)</option>
+              <option value="green">Green (lowest priority)</option>
+            </select>
           </Stack>
         </Modal.Body>
         <Modal.Footer>
