@@ -68,19 +68,16 @@ function Header({ setTasks, setIsAuthenticated, isAuthenticated, setTaskTitle })
   return (
     <Navbar expand="lg" className={`bg-body-tertiary ${!isAuthenticated ? "d-none" : ""}`}>
       <Container>
-        <Navbar.Brand href="#home">TASK MANAGER</Navbar.Brand>
+        <Navbar.Brand href="/">TASK MANAGER</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to={"/"} className="text-decoration-none d-flex align-items-center link-light nav-item-spacing">
-              Home
-            </Link>
             <NavDropdown title="Filter Tasks" id="basic-nav-dropdown" className="nav-item-spacing">
               <NavDropdown.Item onClick={() => filterTasks("all")}>All Tasks</NavDropdown.Item>
               <NavDropdown.Item onClick={() => filterTasks("completed")}>Completed Tasks</NavDropdown.Item>
               <NavDropdown.Item onClick={() => filterTasks("incomplete")}>Pending Tasks</NavDropdown.Item>
             </NavDropdown>
-            <Button className="bg-transparent border-0 nav-item-spacing" style={{ width: "fit-content" }} onClick={handleLogout}>
+            <Button className="bg-transparent border-0 nav-item-spacing" style={{ width: "fit-content", color:"black" }} onClick={handleLogout}>
               LOGOUT
             </Button>
           </Nav>
