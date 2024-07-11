@@ -1,0 +1,11 @@
+input{
+    padding: 5px;
+}
+
+select{
+    padding: 5px;
+}
+
+.nav-item-spacing {
+    margin-right: 25px;
+}
