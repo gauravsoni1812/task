@@ -25,7 +25,7 @@ function Register({ isAuthenticated, setIsAuthenticated }) {
 
 
     await axios
-      .post("http://localhost:4000/api/v1/user/register", data, { withCredentials: true } ).then((res) => {
+      .post("https://task-backend-2emp.onrender.com/api/v1/user/register", data, { withCredentials: true } ).then((res) => {
         setName("");
         setEmail("");
         setPassword("");
