@@ -107,10 +107,10 @@ function Header({ setTasks, setIsAuthenticated, isAuthenticated, setTaskTitle })
               <NavDropdown.Item onClick={() => filterTasks("incomplete")}>Pending Tasks</NavDropdown.Item>
             </NavDropdown>
 
-            <NavDropdown title="Priority" id="basic-nav-dropdown" className="nav-item-spacing">
-              <NavDropdown.Item onClick={() => colorTasks("red")}>Red (high priority priority)</NavDropdown.Item>
-              <NavDropdown.Item onClick={() => colorTasks("blue")}>Blue(medium priority)</NavDropdown.Item>
-              <NavDropdown.Item onClick={() => colorTasks("green")}>green (lowest priority)</NavDropdown.Item>
+            <NavDropdown title="Filter Priority" id="basic-nav-dropdown" className="nav-item-spacing">
+              <NavDropdown.Item onClick={() => colorTasks("red")}> <div className="r"></div>  Red (high priority priority)</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => colorTasks("blue")}> <div className="b"></div>Blue(medium priority)</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => colorTasks("green")}> <div className="g"></div>green (lowest priority)</NavDropdown.Item>
             </NavDropdown>
         
             <Button className="bg-transparent border-0 nav-item-spacing" style={{ width: "fit-content", color:"black" }} onClick={handleLogout}>

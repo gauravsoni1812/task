@@ -66,7 +66,7 @@ const CreateTaskModal = ({
           </Stack>
           <br />
           <Stack gap={3}>
-            <label>Date</label>
+            <label>Due Date</label>
             <input
               type="date"
               placeholder="Select a Date"
@@ -78,13 +78,14 @@ const CreateTaskModal = ({
           <br />
           <Stack gap={2}>
             <label>Color</label>
-            <select value={color} onChange={(e) => {
+           
+            <select style={{color:"white", background:color}} value={color} onChange={(e) => {
               console.log(e.target.value)
               setColor(e.target.value)
               }}>
-              <option value="red">Red (high priority priority)</option>
-              <option value="blue">Blue (medium priority)</option>
-              <option value="green">Green (lowest priority)</option>
+              <option style={{backgroundColor:"red"}} value="red">Red (high priority priority)</option>
+              <option style={{backgroundColor:"blue"}} value="blue">Blue (medium priority)</option>
+              <option style={{backgroundColor:"green"}} value="green">Green (lowest priority)</option>
             </select>
           </Stack>
         </Modal.Body>

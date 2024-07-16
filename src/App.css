@@ -8,4 +8,23 @@ select{
 
 .nav-item-spacing {
     margin-right: 25px;
+ 
+}
+
+.r{
+    height: 20px;
+    width: 20px;
+    background-color: red;
+}
+
+.b{
+    height: 20px;
+    width: 20px;
+    background-color: blue;
+}
+
+.g{
+    height: 20px;
+    width: 20px;
+    background-color: green;
 }

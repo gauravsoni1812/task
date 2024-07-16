@@ -76,7 +76,7 @@ const Home = ({ isAuthenticated, tasks, setTasks, taskTitle }) => {
         {currentTasks && currentTasks.length > 0 ? (
           currentTasks.map((task) => (
             <div key={task._id} className="col-lg-3 col-md-4 col-sm-6">
-              <Card style={{ marginBottom: "20px", minHeight: "400px" }}>
+            {task.color==="blue"? <Card style={{ marginBottom: "20px", minHeight: "400px", color:"white",backgroundColor:"#4535C1" }}>
                 <Card.Body className="d-flex justify-content-between flex-column">
                   <Stack gap={2}>
                     <Card.Title className="mb-2" style={{ height: "50px" }}>
@@ -104,7 +104,69 @@ const Home = ({ isAuthenticated, tasks, setTasks, taskTitle }) => {
                     <FaEye onClick={() => handleViewModalShow(task._id)} className="fs-3" />
                   </Stack>
                 </Card.Body>
-              </Card>
+              </Card>:""}
+
+              {task.color==="red"? <Card style={{ marginBottom: "20px", minHeight: "400px", color:"white",backgroundColor:"red" }}>
+                <Card.Body className="d-flex justify-content-between flex-column">
+                  <Stack gap={2}>
+                    <Card.Title className="mb-2" style={{ height: "50px" }}>
+                      {task && task.title.length <= 40
+                        ? task.title
+                        : task.title.slice(0, 40) + "..."}
+                    </Card.Title>
+                    <Card.Text>
+                      {task && task.description.length <= 300
+                        ? task.description
+                        : task.description.slice(0, 300) + "..."}
+                    </Card.Text>
+                    <Card.Text>
+                      {task.color==="red"?"This is high priority task":""}
+                      {task.color==="blue"?"This is medium priority task":""}
+                      {task.color==="green"?"This is low priority task":""}
+                    </Card.Text>
+                    <Card.Text>
+                      created At {task.createdAt}
+                    </Card.Text>
+                  </Stack>
+                  <Stack direction="horizontal" className="justify-content-end" gap={2}>
+                    <MdEdit onClick={() => handleUpdateModalShow(task._id)} className="fs-3" />
+                    <MdDelete onClick={() => deleteTask(task._id)} className="fs-3" />
+                    <FaEye onClick={() => handleViewModalShow(task._id)} className="fs-3" />
+                  </Stack>
+                </Card.Body>
+              </Card>:""}
+
+              {task.color==="green"? <Card style={{ marginBottom: "20px", minHeight: "400px", color:"white",backgroundColor:"green" }}>
+                <Card.Body className="d-flex justify-content-between flex-column">
+                  <Stack gap={2}>
+                    <Card.Title className="mb-2" style={{ height: "50px" }}>
+                      {task && task.title.length <= 40
+                        ? task.title
+                        : task.title.slice(0, 40) + "..."}
+                    </Card.Title>
+                    <Card.Text>
+                      {task && task.description.length <= 300
+                        ? task.description
+                        : task.description.slice(0, 300) + "..."}
+                    </Card.Text>
+                    <Card.Text>
+                      {task.color==="red"?"This is high priority task":""}
+                      {task.color==="blue"?"This is medium priority task":""}
+                      {task.color==="green"?"This is low priority task":""}
+                    </Card.Text>
+                    <Card.Text>
+                      created At {task.createdAt}
+                    </Card.Text>
+                  </Stack>
+                  <Stack direction="horizontal" className="justify-content-end" gap={2}>
+                    <MdEdit onClick={() => handleUpdateModalShow(task._id)} className="fs-3" />
+                    <MdDelete onClick={() => deleteTask(task._id)} className="fs-3" />
+                    <FaEye onClick={() => handleViewModalShow(task._id)} className="fs-3" />
+                  </Stack>
+                </Card.Body>
+              </Card>:""}
+
+            
             </div>
           ))
         ) : (
